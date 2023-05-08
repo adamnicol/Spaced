@@ -8,6 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
+    "prepare": "husky install",
+    "pre-commit": "next lint",
     "prisma:migrate": "prisma migrate dev",
     "prisma:generate": "prisma generate",
     "prisma:seed": "prisma db seed",
@@ -31,6 +33,7 @@
     "typescript": "^5.0.4"
   },
   "devDependencies": {
+    "husky": "^8.0.3",
     "prisma": "^4.13.0"
   },
   "prisma": {
