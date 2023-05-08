@@ -4,9 +4,6 @@
   "editor.formatOnPaste": true,
   "editor.renderFinalNewline": "off",
 
-  "prettier.printWidth": 100,
-  "git.enableCommitSigning": true,
-
   "[prisma]": {
     "editor.defaultFormatter": "Prisma.prisma"
   },
@@ -18,5 +15,7 @@
 
   // Makes VSCode use the workspace typescript version.
   "typescript.tsdk": "node_modules\\typescript\\lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+
+  "git.enableCommitSigning": true
 }
