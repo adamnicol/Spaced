@@ -1,0 +1,62 @@
+@use "@/styles/breakpoints.scss" as breakpoints;
+
+.header {
+  width: 100vw;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: white;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.navigation {
+  list-style: none;
+  display: none;
+
+  @include breakpoints.medium {
+    display: block;
+  }
+
+  li {
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+.navLink {
+  position: relative;
+  color: black;
+  text-decoration: none;
+  padding-bottom: 2px;
+}
+
+.navLink::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: black;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.navLink:hover::before {
+  transform: scaleX(1);
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}

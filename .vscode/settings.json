@@ -1,0 +1,22 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.renderFinalNewline": "off",
+
+  "prettier.printWidth": 100,
+  "git.enableCommitSigning": true,
+
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  },
+
+  "files.exclude": {
+    "node_modules": true,
+    ".next": true
+  },
+
+  // Makes VSCode use the workspace typescript version.
+  "typescript.tsdk": "node_modules\\typescript\\lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true
+}
