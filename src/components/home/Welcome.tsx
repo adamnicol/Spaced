@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@mantine/core";
+import { Container } from "@/components/ui";
 import { useRouter } from "next/navigation";
 
 import styles from "./Welcome.module.scss";
@@ -10,8 +11,8 @@ export function Welcome() {
 
   return (
     <section id="welcome" className={styles.section}>
-      <div className="container">
-        <div className={styles.title}>Create flashcards and learn using spaced repitition</div>
+      <Container>
+        <h1 className={styles.title}>Create flashcards and learn using spaced repitition</h1>
         <div className={styles.description}>
           Spaced lets you design your own flashcards, build custom decks, and uses advanced spaced
           repitition algorithms to aid your learning.
@@ -24,7 +25,7 @@ export function Welcome() {
             Learn more
           </Button>
         </Button.Group>
-      </div>
+      </Container>
     </section>
   );
 }
