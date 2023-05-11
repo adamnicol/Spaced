@@ -14,6 +14,7 @@
     "prisma:generate": "prisma generate",
     "prisma:seed": "prisma db seed",
     "prisma:reset": "prisma migrate reset",
+    "postinstall": "prisma generate",
     "outdated": "npm outdated",
     "update": "npm update --save"
   },
@@ -38,11 +39,12 @@
     "husky": "^8.0.3",
     "lint-staged": "^13.2.2",
     "prettier": "^2.8.8",
-    "prisma": "^4.13.0"
+    "prisma": "^4.13.0",
+    "ts-node": "^10.9.1"
   },
   "prisma": {
     "schema": "src/prisma/schema.prisma",
-    "seed": "ts-node src/prisma/seed.ts"
+    "seed": "ts-node -O {\"module\":\"CommonJS\"} src/prisma/seed.ts"
   },
   "prettier": {
     "printWidth": 100,

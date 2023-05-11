@@ -6,6 +6,7 @@ export default function HomePage() {
       <Welcome />
       <About />
       <Features />
+      {/* @ts-expect-error Server Component */}
       <FAQ />
     </main>
   );
