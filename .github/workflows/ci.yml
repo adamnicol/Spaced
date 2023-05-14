@@ -1,0 +1,49 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  check:
+    name: Run checks
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          cache: npm
+          cache-dependency-path: ./package-lock.json
+
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        id: cache-dependencies
+        with:
+          path: ./node_modules
+          key: dependencies-${{ hashFiles('./package-lock.json') }}
+
+      - name: Install dependencies
+        if: steps.cache-dependencies.outputs.cache-hit != 'true'
+        run: |
+          npm ci
+          npm install @microsoft/eslint-formatter-sarif
+
+      - name: Build
+        run: npm run build
+        env:
+          POSTGRES_PRISMA_URL: ${{secrets.POSTGRES_PRISMA_URL}}
+
+      - name: Run ESLint
+        run: npx eslint ./src
+          --config .eslintrc.json
+          --format @microsoft/eslint-formatter-sarif
+          --output-file eslint-results.sarif
+        continue-on-error: true
+
+      - name: Upload ESLint results
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: ./eslint-results.sarif
+          wait-for-processing: true
