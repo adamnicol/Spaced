@@ -1,4 +1,5 @@
 import Providers from "@/providers";
+import { Analytics } from "@vercel/analytics/react";
 import { Inter } from "next/font/google";
 
 import "@/styles/globals.scss";
@@ -15,6 +16,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className={inter.className}>
         <Providers>{children}</Providers>
+        <Analytics />
       </body>
     </html>
   );
