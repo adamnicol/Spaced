@@ -1,16 +1,10 @@
 import { Accordion, Container } from "@/components/ui";
-import { API_URL } from "@/config";
-import { FAQ } from "@prisma/client";
+import { getFAQ } from "@/services/data.service";
 
 import styles from "./FAQ.module.scss";
 
-async function fetchFAQ(): Promise<FAQ[]> {
-  const res = await fetch(`${API_URL}/faq`, { cache: "force-cache" });
-  return await res.json();
-}
-
 export async function FAQ() {
-  const data = await fetchFAQ();
+  const data = await getFAQ();
 
   return (
     <section id="faq" className={styles.section}>
