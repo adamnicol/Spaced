@@ -1,0 +1,32 @@
+@use "@/styles/breakpoints.scss" as breakpoints;
+
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.panelLeft {
+  display: none;
+
+  @include breakpoints.large {
+    display: unset;
+    width: 45%;
+    background-color: rgb(27, 74, 112);
+  }
+}
+
+.panelRight {
+  width: 100%;
+  padding-top: 20px;
+
+  @include breakpoints.medium {
+    max-width: 650px;
+    margin: 0 auto;
+  }
+  @include breakpoints.large {
+    width: 55%;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin: 0;
+  }
+}
