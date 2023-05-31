@@ -1,8 +1,8 @@
-import { LoginCredentials } from "@/schemas/login.schema";
+import { LoginDetails } from "@/schemas/login.schema";
 import { LoginForm } from "@/components/form";
 
 export default function LoginPage() {
-  async function onSubmit(credentials: LoginCredentials) {
+  async function onSubmit(details: LoginDetails) {
     "use server";
   }
 

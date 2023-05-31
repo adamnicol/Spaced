@@ -1,3 +1,10 @@
-export default function RegisterPage() {
-  return <h2>Register</h2>;
+import { RegistrationDetails } from "@/schemas/registration.schema";
+import { RegistrationForm } from "@/components/form";
+
+export default function RegistrationPage() {
+  async function onSubmit(details: RegistrationDetails) {
+    "use server";
+  }
+
+  return <RegistrationForm onSubmit={onSubmit} />;
 }

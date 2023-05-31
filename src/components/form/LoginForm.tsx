@@ -1,25 +1,28 @@
 "use client";
 
-import { Anchor, Button, Checkbox, Group, Paper, PasswordInput, TextInput } from "@mantine/core";
-import { LoginCredentials, LoginSchema } from "@/schemas/login.schema";
+import Link from "next/link";
+import { Anchor, Button, Checkbox, Group, Paper } from "@mantine/core";
+import { LoginDetails, LoginSchema } from "@/schemas/login.schema";
+import { PasswordInput, Text, TextInput } from "@mantine/core";
 import { useForm, zodResolver } from "@mantine/form";
 
 type LoginFormProps = {
-  onSubmit: (credentials: LoginCredentials) => void;
+  onSubmit: (details: LoginDetails) => void;
 };
 
 export function LoginForm(props: LoginFormProps) {
-  const form = useForm<LoginCredentials>({
+  const form = useForm<LoginDetails>({
     initialValues: {
       email: "",
       password: "",
+      remember: false,
     },
     validate: zodResolver(LoginSchema),
   });
 
   return (
     <Paper withBorder shadow="md" p={30} mt={30} radius="md">
-      <form onSubmit={form.onSubmit(props.onSubmit)}>
+      <form onSubmit={form.onSubmit((values) => props.onSubmit(values))}>
         <TextInput
           withAsterisk
           label="Email address"
@@ -37,8 +40,8 @@ export function LoginForm(props: LoginFormProps) {
         />
 
         <Group position="apart" mt="lg">
-          <Checkbox label="Remember me" />
-          <Anchor component="button" size="sm">
+          <Checkbox label="Remember me" {...form.getInputProps("remember")} />
+          <Anchor component={Link} size="sm" href="/resetpassword">
             Forgot password?
           </Anchor>
         </Group>
@@ -46,6 +49,13 @@ export function LoginForm(props: LoginFormProps) {
         <Button type="submit" fullWidth mt="xl">
           Login
         </Button>
+
+        <Text ta="center" mt="md" size="sm">
+          Don&apos;t have an account?
+          <Anchor component={Link} href="/register" fw="bold" ml={5}>
+            Sign up
+          </Anchor>
+        </Text>
       </form>
     </Paper>
   );
