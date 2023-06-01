@@ -6,4 +6,9 @@ export const LoginSchema = z.object({
   remember: z.boolean().optional().default(false),
 });
 
+export const ResetPasswordSchema = z.object({
+  email: z.string().email("Please enter a valid email address"),
+});
+
 export type LoginDetails = z.infer<typeof LoginSchema>;
+export type ResetPasswordRequest = z.infer<typeof ResetPasswordSchema>;
