@@ -17,11 +17,14 @@
 }
 
 .navigation {
-  list-style: none;
   display: none;
 
   @include breakpoints.medium {
     display: block;
+  }
+
+  ul {
+    list-style: none;
   }
 
   li {

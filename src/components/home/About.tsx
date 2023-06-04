@@ -1,9 +1,11 @@
+import { Container } from "@/components/ui";
+
 import styles from "./About.module.scss";
 
 export function About() {
   return (
     <section id="about" className={styles.section}>
-      <div className="container">About</div>
+      <Container>About</Container>
     </section>
   );
 }
